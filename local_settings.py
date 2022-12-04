@@ -4,8 +4,9 @@ from getpass import getuser, getpass
 
 
 def getCookies():
-    session = "53616c7465645f5f1112922560209ba2bc1cf24b1353c0b06638a408f47cd0992af83c26b6ba7a67dc8a0fff3bde48b8cb4d03dfab4a932ddb8421010d49b78b"
-    return {"session": session}
+    if "AOC_SESSION" not in environ:
+        raise EnvironmentError("Missing AOC_SESSION key")
+    return {"session": environ["AOC_SESSION"]}
 
 
 def getProxies():
